@@ -46,7 +46,10 @@ UI.prototype.showAlert = function(message, className) {
 // Delete book
 UI.prototype.deleteBook = function(target) {
   if (target.className === "delete") {
+    // Remove the row: a > td > tr
     target.parentElement.parentElement.remove();
+
+    this.showAlert("Book removed", "success");
   }
 };
 
@@ -94,9 +97,6 @@ document.getElementById("book-list").addEventListener("click", function(e) {
 
   // Delete book
   ui.deleteBook(e.target);
-
-  // Show message
-  ui.showAlert("Book Removed", "success");
 
   e.preventDefault();
 });
